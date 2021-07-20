@@ -1,11 +1,11 @@
 Package: plantiosflorestais
-Title: What the Package Does (One Line, Title Case)
+Title: Base de dados dos mapeamentos públicos de plantios florestais disponíveis no Brasil
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Maykon",
+           family = "Pedro",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "maykonglaffite@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: GPL (>= 3)
