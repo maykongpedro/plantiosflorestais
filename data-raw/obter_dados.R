@@ -22,11 +22,20 @@ download.file(mapeamentos_gerais_url,
 
 
 # Importar dados para o pacote --------------------------------------------
-mapeamentos_municipios <- readr::read_rds("./data-raw/mapeamentos_municipios.rds")
+
+# carregar mapeamento de municípios
+mapeamentos_municipios_raw <- readr::read_rds("./data-raw/mapeamentos_municipios.rds")
+
+# retirar coluna de lati e long da base de muni
+mapeamentos_municipios <- mapeamentos_municipios %>%
+    dplyr::select(-latitude,
+                  -longitude)
+
+# carregar mapeamento geral
 mapeamentos_estaduais <- readr::read_rds("./data-raw/mapeamentos_gerais.rds")
 
 
-usethis::use_data(mapeamentos_municipios)
-usethis::use_data(mapeamentos_estaduais)
+usethis::use_data(mapeamentos_municipios, overwrite = TRUE)
+usethis::use_data(mapeamentos_estaduais, overwrite = TRUE)
 
 
