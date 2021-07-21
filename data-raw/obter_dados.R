@@ -32,10 +32,10 @@ mapeamentos_municipios <- mapeamentos_municipios %>%
                   -longitude)
 
 # carregar mapeamento geral
-mapeamentos_estaduais <- readr::read_rds("./data-raw/mapeamentos_gerais.rds")
+mapeamentos_estados <- readr::read_rds("./data-raw/mapeamentos_gerais.rds")
 
 
 usethis::use_data(mapeamentos_municipios, overwrite = TRUE)
-usethis::use_data(mapeamentos_estaduais, overwrite = TRUE)
+usethis::use_data(mapeamentos_estados, overwrite = TRUE)
 
 
