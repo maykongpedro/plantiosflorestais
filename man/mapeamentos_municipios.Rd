@@ -5,7 +5,7 @@
 \alias{mapeamentos_municipios}
 \title{Dados sobre os mapeamentos em nivel municipal de plantios florestais no Brasil}
 \format{
-Uma tibble com 32,588 linhas e 12 colunas, contendo:
+Uma tibble com 32,588 linhas e 10 colunas, contendo:
 \describe{
 \item{mapeamento}{Nome do mapeamento ou relatorio de origem}
 \item{fonte}{Fonte dos dados, nao e necessariamente o responsavel pelo
@@ -21,6 +21,7 @@ publicado, geralmente}
 }
 }
 \source{
+Os relatorios e mapeamentos utilizados constam no README do pacote.
 Para detalhes, veja o seguinte repositorio: - \url{https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-plantios-florestais}
 }
 \usage{
