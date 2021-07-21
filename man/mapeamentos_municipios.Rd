@@ -3,32 +3,32 @@
 \docType{data}
 \name{mapeamentos_municipios}
 \alias{mapeamentos_municipios}
-\title{Dados sobre os mapeamentos em nível municipal de plantios florestais no Brasil}
+\title{Dados sobre os mapeamentos em nivel municipal de plantios florestais no Brasil}
 \format{
 Uma tibble com 32,588 linhas e 12 colunas, contendo:
 \describe{
-\item{mapeamento}{Nome do mapeamento ou relatório de origem}
-\item{fonte}{Fonte dos dados, não é necessariamente o responsável pelo
-relatório}
-\item{ano_base}{Ano base do mapeamento, diferere do ano que o relatório foi
+\item{mapeamento}{Nome do mapeamento ou relatorio de origem}
+\item{fonte}{Fonte dos dados, nao e necessariamente o responsavel pelo
+relatorio}
+\item{ano_base}{Ano base do mapeamento, difere do ano em que o relatorio foi
 publicado, geralmente}
-\item{uf}{Unidade Federativa da União}
-\item{estado}{Nome do Estado da União}
-\item{municipio}{Nome do município}
-\item{code_muni}{Código único do município pelo IBGE}
-\item{genero}{Gênero do plantio florestal}
-\item{area_ha}{Área plantada (ha)}
+\item{uf}{Unidade Federativa da Uniao}
+\item{estado}{Nome do Estado da Uniao}
+\item{municipio}{Nome do municipio}
+\item{code_muni}{Codigo unico do municipio pelo IBGE}
+\item{genero}{Genero do plantio florestal}
+\item{area_ha}{Area plantada em hectares}
 }
 }
 \source{
-Diversos - \url{https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-plantios-florestais}
+Para detalhes, veja o seguinte repositorio: - \url{https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-plantios-florestais}
 }
 \usage{
 mapeamentos_municipios
 }
 \description{
 Base de dados contendo os mapeamentos de plantios florestais no Brasil,
-a nível de município.
+a nivel de municipio.
 }
 \examples{
 head(mapeamentos_municipios)
