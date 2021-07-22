@@ -39,29 +39,26 @@ mapeamentos_disponiveis <- function(){
 #' @examples
 generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
 
+
     map_muni <- plantiosflorestais::mapeamentos_municipios
 
-        if (exibir_nome_mapeamento == TRUE) {
-
-            map_muni %>%
+    if (exibir_nome_mapeamento == TRUE) {
+        map_muni %>%
             dplyr::distinct(genero, mapeamento)
 
-        } else {
-
-            map_muni %>%
+    } else {
+        map_muni %>%
             dplyr::distinct(genero)
-        }
+    }
 
 
     map_uf <- plantiosflorestais::mapeamentos_estados
 
     if (exibir_nome_mapeamento == TRUE) {
-
         map_uf %>%
             dplyr::distinct(genero, mapeamento)
 
     } else {
-
         map_uf %>%
             dplyr::distinct(genero)
     }
