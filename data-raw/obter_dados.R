@@ -37,7 +37,7 @@ mapeamentos_estados <- readr::read_rds("./data-raw/mapeamentos_gerais.rds") %>%
     # corrigir gêneros
     dplyr::mutate(
         genero = dplyr::case_when(
-            genero == "Eucalipto" ~ "Eucalyptus",
+            genero == "eucalipto" ~ "Eucalyptus",
             genero == "pinus" ~ "Pinus",
             genero == "outros" ~ "Outros",
             genero == "acacia" ~ "Acácia",
