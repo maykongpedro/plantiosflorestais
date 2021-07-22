@@ -33,7 +33,19 @@ mapeamentos_municipios <- mapeamentos_municipios %>%
 
 # carregar mapeamento geral
 mapeamentos_estados <- readr::read_rds("./data-raw/mapeamentos_gerais.rds") %>%
-    tibble::as_tibble()
+    tibble::as_tibble() %>%
+    # corrigir gêneros
+    dplyr::mutate(
+        genero = dplyr::case_when(
+            genero == "Eucalipto" ~ "Eucalyptus",
+            genero == "pinus" ~ "Pinus",
+            genero == "outros" ~ "Outros",
+            genero == "acacia" ~ "Acácia",
+            genero == "Corte" ~ "Corte/Colhido",
+            TRUE ~ genero
+        )
+    )
+
 
 
 usethis::use_data(mapeamentos_municipios, overwrite = TRUE)
