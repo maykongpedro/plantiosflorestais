@@ -12,3 +12,11 @@
 #' @param rhs A function call using the magrittr semantics.
 #' @return The result of calling `rhs(lhs)`.
 NULL
+
+
+# Definir itens usados nas funções com dplyr como variáveis globais
+utils::globalVariables(c(
+    "mapeamento",
+    "fonte",
+    "base"
+))
