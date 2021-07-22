@@ -18,5 +18,6 @@ NULL
 utils::globalVariables(c(
     "mapeamento",
     "fonte",
-    "base"
+    "base",
+    "genero"
 ))

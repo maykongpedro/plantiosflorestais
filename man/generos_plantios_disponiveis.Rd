@@ -2,13 +2,17 @@
 % Please edit documentation in R/explorar_mapeamentos.R
 \name{generos_plantios_disponiveis}
 \alias{generos_plantios_disponiveis}
-\title{Quais os genero}
+\title{Generos existentes nos mapeamentos disponiveis}
 \usage{
-generos_plantios_disponiveis()
+generos_plantios_disponiveis(exibir_nome_mapeamento = FALSE)
+}
+\arguments{
+\item{exibir_nome_mapeamento}{padrao = FALSE, se TRUE exibe o nome do mapeamento}
 }
 \value{
-
+Uma tibble
 }
 \description{
-Texto descriçao
+Resume quais sao os generos dos plantios florestais existentes nas bases utilizadas
+no pacote.
 }

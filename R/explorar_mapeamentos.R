@@ -25,30 +25,45 @@ mapeamentos_disponiveis <- function(){
 
 }
 
-#' Quais os genero
+
+#' Generos existentes nos mapeamentos disponiveis
 #'
-#' Texto descriçao
+#' Resume quais sao os generos dos plantios florestais existentes nas bases utilizadas
+#' no pacote.
 #'
-#' @return
+#' @param exibir_nome_mapeamento padrao = FALSE, se TRUE exibe o nome do mapeamento
+#'
+#' @return Uma tibble
 #' @export
 #'
 #' @examples
-generos_plantios_disponiveis <- function(){
+generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
+
+    map_muni <- plantiosflorestais::mapeamentos_municipios
+
+        if (exibir_nome_mapeamento == TRUE) {
+
+            map_muni %>%
+            dplyr::distinct(genero, mapeamento)
+
+        } else {
+
+            map_muni %>%
+            dplyr::distinct(genero)
+        }
 
 
+    map_uf <- plantiosflorestais::mapeamentos_estados
+
+    if (exibir_nome_mapeamento == TRUE) {
+
+        map_uf %>%
+            dplyr::distinct(genero, mapeamento)
+
+    } else {
+
+        map_uf %>%
+            dplyr::distinct(genero)
+    }
 }
 
-
-
-#' Título
-#'
-#' Texto descriçao
-#'
-#' @return
-#' @export
-#'
-#' @examples
-estados_com_municipios_mapeados <- function(){
-
-
-}
