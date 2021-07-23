@@ -1,8 +1,8 @@
 ## code to prepare `DATASET` dataset goes here
 
 # Usar pipe
-usethis::use_pipe()
-devtools::document()
+# usethis::use_pipe()
+# devtools::document()
 
 
 # Fazer download dos mapeamentos faxinados --------------------------------
@@ -27,25 +27,15 @@ download.file(mapeamentos_gerais_url,
 mapeamentos_municipios_raw <- readr::read_rds("./data-raw/mapeamentos_municipios.rds")
 
 # retirar coluna de lati e long da base de muni
-mapeamentos_municipios <- mapeamentos_municipios %>%
+mapeamentos_municipios <- mapeamentos_municipios_raw %>%
     dplyr::select(-latitude,
                   -longitude)
 
 # carregar mapeamento geral
-mapeamentos_estados <- readr::read_rds("./data-raw/mapeamentos_gerais.rds") %>%
-    tibble::as_tibble() %>%
-    # corrigir gêneros
-    dplyr::mutate(
-        genero = dplyr::case_when(
-            genero == "eucalipto" ~ "Eucalyptus",
-            genero == "pinus" ~ "Pinus",
-            genero == "outros" ~ "Outros",
-            genero == "acacia" ~ "Acácia",
-            genero == "Corte" ~ "Corte/Colhido",
-            TRUE ~ genero
-        )
-    )
+mapeamentos_estados <- readr::read_rds("./data-raw/mapeamentos_gerais.rds")
 
+
+mapeamentos_estados %>% tibble::view()
 
 
 usethis::use_data(mapeamentos_municipios, overwrite = TRUE)
