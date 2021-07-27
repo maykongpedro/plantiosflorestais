@@ -11,5 +11,5 @@ Uma tibble com 3 colunas
 }
 \description{
 Usando as duas bases existentes no pacote, resume quais sao os mapeamentos e
-relatorios disponiveis no pacote, alem de informar qual a fonte.
+relatorios disponiveis, alem de informar qual a fonte dos mesmos.
 }

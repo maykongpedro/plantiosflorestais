@@ -2,7 +2,7 @@
 #' Mapeamentos/Relatorios disponiveis dentro do pacote
 #'
 #' Usando as duas bases existentes no pacote, resume quais sao os mapeamentos e
-#' relatorios disponiveis no pacote, alem de informar qual a fonte.
+#' relatorios disponiveis, alem de informar qual a fonte dos mesmos.
 #'
 #' @return Uma tibble com 3 colunas
 #' @export
@@ -14,7 +14,7 @@ mapeamentos_disponiveis <- function(){
         dplyr::distinct(mapeamento, fonte) %>%
         dplyr::mutate(base = "mapeamentos_municipios")
 
-    estaduais <- plantiosflorestais::mapeamentos_municipios %>%
+    estaduais <- plantiosflorestais::mapeamentos_estados %>%
         dplyr::distinct(mapeamento, fonte) %>%
         dplyr::mutate(base = "mapeamentos_estados")
 
@@ -24,6 +24,36 @@ mapeamentos_disponiveis <- function(){
     tabela
 
 }
+
+
+# mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
+#
+#     unidade_federativa = "PR"
+#
+#     plantiosflorestais::mapeamentos_municipios %>%
+#         dplyr::filter(uf == unidade_federativa) %>%
+#         dplyr::group_by(mapeamento, ano_base) %>%
+#         dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+#         dplyr::mutate(abordagem = "Por município")
+#         # tidyr::pivot_wider(names_from = ano_base,
+#         #                    values_from = area_total_ha)
+#
+#
+#     plantiosflorestais::mapeamentos_estados %>%
+#         dplyr::filter(uf == unidade_federativa) %>%
+#         dplyr::group_by(mapeamento, ano_base) %>%
+#         dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+#         dplyr::mutate(
+#             abordagem = dplyr::case_when(
+#                 mapeamento == "AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017" ~ "Por coredes",
+#                 mapeamento == "APRE - Estudo Setorial 2020" ~ "Por região",
+#                 TRUE ~ "Estadual"
+#             )
+#         )
+#     # tidyr::pivot_wider(names_from = ano_base,
+#     #                    values_from = area_total_ha)
+#
+# }
 
 
 #' Generos existentes nos mapeamentos disponiveis
@@ -51,7 +81,8 @@ generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
             dplyr::distinct(genero)
     }
 
-
+    # preciso alterar para gerar uma base com tudo e depois decide se exibe o nome
+    # do mapeamento
     map_uf <- plantiosflorestais::mapeamentos_estados
 
     if (exibir_nome_mapeamento == TRUE) {
