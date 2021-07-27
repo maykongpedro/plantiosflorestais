@@ -14,12 +14,16 @@ curso de Engenharia Florestal da Universidade Federal do Paraná (UFPR),
 pelo graduando Maykon G. G. Pedro. O trabalho final pode ser acessado
 pelo seguinte link: [Ver trabalho]().
 
-Os mapeamentos disponíveis podem ser verificados no tópico “FONTE DE
-DADOS” desse `README`.
+O repositório que contém todo o processo de extração e limpeza dos dados
+pode ser consultado no seguinte endereço [Acessar
+Repositório](https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-plantios-florestais)
+
+Os mapeamentos disponíveis podem ser verificados no tópico “Fonte de
+dados” desse `README`.
 
 ## Instalação
 
-Você pode instalar a versão de desenvolvimento desse pacote diratemente
+Você pode instalar a versão de desenvolvimento desse pacote diretamente
 do GitHub usando os seguintes comandos:
 
 ``` r
@@ -28,6 +32,15 @@ devtools::install_github("maykongpedro/plantiosflorestais")
 ```
 
 ## Acesso às bases
+
+Os dados presentes nesse pacote foram extraídos e organizados gerando
+duas bases principais, uma para os mapeamentos que continham dados para
+municípios, e outra para os mapeamentos que continham dados gerais, em
+nível estadual ou regional.
+
+As mesmas podem ser acessadas pelos seguintes comandos do pacote:
+
+As colunas contidas nessas bases são as seguintes:
 
 ## Funções disponíveis
 
@@ -50,10 +63,13 @@ existentes no pacote.
 | AGEFLOR     | AGEFLOR, FEPAM, Codex, RDK Logs       | [AGEFLOR - O setor de base florestal no Rio Grande do Sul 2020](http://www.ageflor.com.br/noticias/wp-content/uploads/2020/12/O-Setor-de-Base-Florestal-no-Rio-Grande-do-Sul-2020-ano-base-2019.pdf) |
 | FAMATO      | IMEA                                  | [Diagnóstico de Florestas Plantadas do Estado do Mato Grosso](http://www.arefloresta.org.br/uploads/downloads/00072201414739.pdf)                                                                    |
 
-``` r
-#library(plantiosflorestais)
-## basic example code
-```
+O presente pacote não dispensa a leitura e consulta dos relatórios
+oficiais, apenas consolida números de áreas. Toda explicação
+metodológica sobre os mapeamentos e noção de contexto para cada valor
+podem ser encontrados nos respectivos arquivos originais.
+
+Toda informação utilizada advinda desse pacote deve ser devidamente
+citada a fonte, usando o mapeamento de referência.
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also

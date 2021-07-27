@@ -22,17 +22,36 @@ Este pacote tem como objetivo disponibilizar dados de área de mapeamentos públ
 
 O pacote foi resultado do Trabalho de Conclusão de Curso apresentado ao curso de Engenharia Florestal da Universidade Federal do Paraná (UFPR), pelo graduando Maykon G. G. Pedro. O trabalho final pode ser acessado pelo seguinte link: [Ver trabalho]().
 
-Os mapeamentos disponíveis podem ser verificados no tópico "FONTE DE DADOS" desse `README`.
+O repositório que contém todo o processo de extração e limpeza dos dados pode ser consultado no seguinte endereço [Acessar Repositório](https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-plantios-florestais)
+
+Os mapeamentos disponíveis podem ser verificados no tópico "Fonte de dados" desse `README`.
+
 
 ## Instalação
 
-Você pode instalar a versão de desenvolvimento desse pacote diratemente do GitHub usando os seguintes comandos:
+Você pode instalar a versão de desenvolvimento desse pacote diretamente do GitHub usando os seguintes comandos:
 ``` r
 # install.packages("devtools")
 devtools::install_github("maykongpedro/plantiosflorestais")
 ```
 
 ## Acesso às bases
+Os dados presentes nesse pacote foram extraídos e organizados gerando duas bases principais, uma para os mapeamentos que continham dados para municípios, e outra para os mapeamentos que continham dados gerais, em nível estadual ou regional.
+
+As mesmas podem ser acessadas pelos seguintes comandos do pacote:
+
+```{r example, eval=FALSE, include=FALSE}
+
+plantiosflorestais::mapeamentos_municipios
+plantiosflorestais::mapeamentos_estados
+
+```
+
+As colunas contidas nessas bases são as seguintes:
+
+
+
+
 
 
 ## Funções disponíveis
@@ -57,15 +76,9 @@ Cada relatório ou mapeamento que foi usado nesse pacote está destacado na tabe
 | FAMATO      | IMEA                                  | [Diagnóstico de Florestas Plantadas do Estado do Mato Grosso](http://www.arefloresta.org.br/uploads/downloads/00072201414739.pdf)                                                                    |
 
 
+O presente pacote não dispensa a leitura e consulta dos relatórios oficiais, apenas consolida números de áreas. Toda explicação metodológica sobre os mapeamentos e noção de contexto para cada valor podem ser encontrados nos respectivos arquivos originais.
 
-
-
-
-
-```{r example}
-#library(plantiosflorestais)
-## basic example code
-```
+Toda informação utilizada advinda desse pacote deve ser devidamente citada a fonte, usando o mapeamento de referência.
 
 
 
