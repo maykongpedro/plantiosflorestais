@@ -26,34 +26,75 @@ mapeamentos_disponiveis <- function(){
 }
 
 
-# mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
-#
-#     unidade_federativa = "PR"
-#
-#     plantiosflorestais::mapeamentos_municipios %>%
-#         dplyr::filter(uf == unidade_federativa) %>%
-#         dplyr::group_by(mapeamento, ano_base) %>%
-#         dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
-#         dplyr::mutate(abordagem = "Por município")
-#         # tidyr::pivot_wider(names_from = ano_base,
-#         #                    values_from = area_total_ha)
-#
-#
-#     plantiosflorestais::mapeamentos_estados %>%
-#         dplyr::filter(uf == unidade_federativa) %>%
-#         dplyr::group_by(mapeamento, ano_base) %>%
-#         dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
-#         dplyr::mutate(
-#             abordagem = dplyr::case_when(
-#                 mapeamento == "AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017" ~ "Por coredes",
-#                 mapeamento == "APRE - Estudo Setorial 2020" ~ "Por região",
-#                 TRUE ~ "Estadual"
-#             )
-#         )
-#     # tidyr::pivot_wider(names_from = ano_base,
-#     #                    values_from = area_total_ha)
-#
-# }
+#' Mapeamentos/Relatorios disponiveis para determinada unidade federativa (estado)
+#'
+#' @param unidade_federativa  Sigla da Unidade federativa do Brasil, se nao for
+#' definida nenhuma, a funcao ira retornar os mapeamentos para o Parana - PR.
+#'
+#' @return Retorna uma tible organizada por ano, do mais recente para o mais antigo,
+#' com areas totais por mapeamento, informando qual a abordagem do mesmo.
+#' @export
+#'
+#' @examples
+mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
+
+    # Check de input
+    if (stringr::str_detect(unidade_federativa, "[A-Z]{2}") == FALSE) {
+        stop("Por gentileza, preencha uma UF válida.", call. = FALSE)
+
+    }
+
+    # Mapeamentos de municípios
+    if(unidade_federativa == "RS") {
+        # Filtro necessário para os municípios não ficarem duplicados na área
+        muni <- plantiosflorestais::mapeamentos_municipios %>%
+            dplyr::filter(uf == unidade_federativa,
+                          genero == "Todos") %>%
+            dplyr::group_by(ano_base, mapeamento) %>%
+            dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+            dplyr::mutate(abordagem = "Por município")
+
+
+    } else {
+        muni <- plantiosflorestais::mapeamentos_municipios %>%
+            dplyr::filter(uf == unidade_federativa) %>%
+            dplyr::group_by(mapeamento, ano_base) %>%
+            dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+            dplyr::mutate(abordagem = "Por município")
+
+    }
+
+    # Mapeamento de estados
+    estado <- plantiosflorestais::mapeamentos_estados %>%
+        dplyr::filter(uf == unidade_federativa) %>%
+        dplyr::group_by(mapeamento, ano_base) %>%
+        dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+        dplyr::mutate(
+            abordagem = dplyr::case_when(
+                mapeamento == "AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017" ~ "Por coredes",
+                mapeamento == "APRE - Estudo Setorial 2020" ~ "Por região",
+                mapeamento == "ACR - Anuário Estatistico 2019" ~ "Por região",
+                TRUE ~ "Estadual"
+            )
+        )
+
+    # Juntar os dois resultados
+    df_final <- dplyr::bind_rows(muni, estado) %>%
+        dplyr::arrange(dplyr::desc(ano_base)) %>%
+        dplyr::relocate(ano_base, .before = mapeamento)
+
+    # Testar se existe resultado no output
+    linhas_df <- nrow(df_final)
+
+    # Return
+    if (linhas_df > 0) {
+        return(df_final)
+
+    } else{
+        stop("Por gentileza, preencha uma UF válida.", call.= FALSE)
+    }
+
+}
 
 
 #' Generos existentes nos mapeamentos disponiveis
