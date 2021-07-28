@@ -2,7 +2,8 @@
 % Please edit documentation in R/explorar_mapeamentos.R
 \name{mapeamento_existente_uf}
 \alias{mapeamento_existente_uf}
-\title{Mapeamentos/Relatorios disponiveis para determinada unidade federativa (estado)}
+\title{Area dos Mapeamentos/Relatorios disponiveis para determinada unidade
+federativa (estado)}
 \usage{
 mapeamento_existente_uf(unidade_federativa = "PR")
 }
@@ -15,5 +16,6 @@ Retorna uma tible organizada por ano, do mais recente para o mais antigo,
 com areas totais por mapeamento, informando qual a abordagem do mesmo.
 }
 \description{
-Mapeamentos/Relatorios disponiveis para determinada unidade federativa (estado)
+Area dos Mapeamentos/Relatorios disponiveis para determinada unidade
+federativa (estado)
 }

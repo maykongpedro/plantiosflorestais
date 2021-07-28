@@ -22,5 +22,6 @@ utils::globalVariables(c(
     "genero",
     "ano_base",
     "uf",
-    "area_ha"
+    "area_ha",
+    "dupe_count"
 ))

@@ -36,7 +36,7 @@ mapeamentos_disponiveis <- function(){
 #' @export
 #'
 #' @examples
-mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
+mapeamento_existente_area_uf  <- function(unidade_federativa = "PR"){
 
     # Check de input
     if (stringr::str_detect(unidade_federativa, "[A-Z]{2}") == FALSE) {
@@ -136,3 +136,46 @@ generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
     }
 }
 
+
+#' Mapeamentos/Relatorios com series historicas
+#'
+#' @return Uma tibble com os mapeamentos que possuem uma serie historica
+#' @export
+#'
+#' @examples
+serie_historicas_disponiveis <- function(){
+
+    # Mapeamentos de municipios
+    map_muni <- plantiosflorestais::mapeamentos_municipios
+    muni <- map_muni %>%
+        dplyr::group_by(ano_base, mapeamento) %>%
+        dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+        janitor::get_dupes(mapeamento) %>%
+        dplyr::select(-dupe_count) %>%
+        dplyr::mutate(base ="mapeamentos_municipios") %>%
+        dplyr::relocate(base, .before = mapeamento)
+    muni
+
+    # Mapeamento de estados
+    map_uf <- plantiosflorestais::mapeamentos_estados
+    estado <- map_uf %>%
+        dplyr::group_by(ano_base, mapeamento) %>%
+        dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+        janitor::get_dupes(mapeamento) %>%
+        dplyr::select(-dupe_count) %>%
+        dplyr::mutate(base ="mapeamentos_estados") %>%
+        dplyr::relocate(base, .before = mapeamento)
+    estado
+
+
+    # map_uf %>%
+    #     dplyr::filter(mapeamento == "IBÁ - Relatório Anual 2020") %>%
+    #     dplyr::group_by(genero, ano_base) %>%
+    #     dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
+    #     tibble::view()
+
+
+    # Juntar os dois resultados
+    df_final <- dplyr::bind_rows(muni, estado)
+
+}
