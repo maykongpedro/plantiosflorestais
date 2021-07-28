@@ -19,5 +19,8 @@ utils::globalVariables(c(
     "mapeamento",
     "fonte",
     "base",
-    "genero"
+    "genero",
+    "ano_base",
+    "uf",
+    "area_ha"
 ))

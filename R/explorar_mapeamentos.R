@@ -40,19 +40,19 @@ mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
 
     # Check de input
     if (stringr::str_detect(unidade_federativa, "[A-Z]{2}") == FALSE) {
-        stop("Por gentileza, preencha uma UF válida.", call. = FALSE)
+        stop("Por gentileza, preencha uma UF v\u00E1lida.", call. = FALSE)
 
     }
 
-    # Mapeamentos de municípios
+    # Mapeamentos de municipios
     if(unidade_federativa == "RS") {
-        # Filtro necessário para os municípios não ficarem duplicados na área
+        # Filtro necessário para os municipios não ficarem duplicados na área
         muni <- plantiosflorestais::mapeamentos_municipios %>%
             dplyr::filter(uf == unidade_federativa,
                           genero == "Todos") %>%
             dplyr::group_by(ano_base, mapeamento) %>%
             dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
-            dplyr::mutate(abordagem = "Por município")
+            dplyr::mutate(abordagem = "Por munic\u00CDpio")
 
 
     } else {
@@ -60,7 +60,7 @@ mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
             dplyr::filter(uf == unidade_federativa) %>%
             dplyr::group_by(mapeamento, ano_base) %>%
             dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
-            dplyr::mutate(abordagem = "Por município")
+            dplyr::mutate(abordagem = "Por munic\u00CDpio")
 
     }
 
@@ -71,9 +71,9 @@ mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
         dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
         dplyr::mutate(
             abordagem = dplyr::case_when(
-                mapeamento == "AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017" ~ "Por coredes",
-                mapeamento == "APRE - Estudo Setorial 2020" ~ "Por região",
-                mapeamento == "ACR - Anuário Estatistico 2019" ~ "Por região",
+                mapeamento == "AGEFLOR - A ind\u00FAstria de base florestal no Rio Grande do Sul 2017" ~ "Por coredes",
+                mapeamento == "APRE - Estudo Setorial 2020" ~ "Por regi\u00E3o",
+                mapeamento == "ACR - Anu\u00E1rio Estatistico 2019" ~ "Por regi\u00E3o",
                 TRUE ~ "Estadual"
             )
         )
@@ -91,7 +91,7 @@ mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
         return(df_final)
 
     } else{
-        stop("Por gentileza, preencha uma UF válida.", call.= FALSE)
+        stop("Por gentileza, preencha uma UF v\u00E1lida.", call.= FALSE)
     }
 
 }
