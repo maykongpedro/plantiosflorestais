@@ -26,7 +26,8 @@ mapeamentos_disponiveis <- function(){
 }
 
 
-#' Mapeamentos/Relatorios disponiveis para determinada unidade federativa (estado)
+#'Area dos Mapeamentos/Relatorios disponiveis para determinada unidade
+#'federativa (estado)
 #'
 #' @param unidade_federativa  Sigla da Unidade federativa do Brasil, se nao for
 #' definida nenhuma, a funcao ira retornar os mapeamentos para o Parana - PR.
@@ -36,7 +37,7 @@ mapeamentos_disponiveis <- function(){
 #' @export
 #'
 #' @examples
-mapeamento_existente_area_uf  <- function(unidade_federativa = "PR"){
+mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
 
     # Check de input
     if (stringr::str_detect(unidade_federativa, "[A-Z]{2}") == FALSE) {
@@ -137,7 +138,7 @@ generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
 }
 
 
-#' Mapeamentos/Relatorios com series historicas
+#' Area dos Mapeamentos/Relatorios com series historicas por ano
 #'
 #' @return Uma tibble com os mapeamentos que possuem uma serie historica
 #' @export
