@@ -140,7 +140,8 @@ generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
 
 #' Area dos Mapeamentos/Relatorios com series historicas por ano
 #'
-#' @return Uma tibble com os mapeamentos que possuem uma serie historica
+#' @return Uma tibble com os mapeamentos que possuem uma serie historica,
+#' com a respectiva area para cada ano-base
 #' @export
 #'
 #' @examples
@@ -168,15 +169,7 @@ serie_historicas_disponiveis <- function(){
         dplyr::relocate(base, .before = mapeamento)
     estado
 
-
-    # map_uf %>%
-    #     dplyr::filter(mapeamento == "IBÁ - Relatório Anual 2020") %>%
-    #     dplyr::group_by(genero, ano_base) %>%
-    #     dplyr::summarise(area_total_ha = sum(area_ha, na.rm = TRUE)) %>%
-    #     tibble::view()
-
-
     # Juntar os dois resultados
     df_final <- dplyr::bind_rows(muni, estado)
-
+    df_final
 }

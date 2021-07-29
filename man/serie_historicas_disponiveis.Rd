@@ -7,7 +7,8 @@
 serie_historicas_disponiveis()
 }
 \value{
-Uma tibble com os mapeamentos que possuem uma serie historica
+Uma tibble com os mapeamentos que possuem uma serie historica,
+com a respectiva area para cada ano-base
 }
 \description{
 Area dos Mapeamentos/Relatorios com series historicas por ano
