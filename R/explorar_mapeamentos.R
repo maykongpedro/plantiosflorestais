@@ -111,7 +111,6 @@ mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
 #' @examples
 generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
 
-    exibir_nome_mapeamento = FALSE
     map_muni <- plantiosflorestais::mapeamentos_municipios
 
     if (exibir_nome_mapeamento == TRUE) {
