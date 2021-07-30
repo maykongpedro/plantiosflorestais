@@ -1,26 +1,48 @@
 
 
 
-plotar_historico_brasil <- function(mapeamento = c("IBA", "IBGE"),
-                                    exibir_generos = TRUE
-                                    ){
+plotar_historico_brasil_iba <- function(abrangecia_uf = NULL, exibir_generos = TRUE){
+
     # Base
     map_uf <- plantiosflorestais::mapeamentos_estados
 
+    # Definir filtro de região - Base SNIF
+    abrangecia_uf = NULL
 
-    iba_snif <- map_uf %>%
+    if (is.null(abrangecia_uf)) {
+
+        iba_snif <- map_uf %>%
+            dplyr::filter(mapeamento == "IBÁ - Não identificado")
+
+    } else if(stringr::str_detect(abrangecia_uf, "[A-Z]{2}") == FALSE) {
+
+        stop("Por gentileza, preencha uma UF v\u00E1lida.", call. = FALSE)
+
+    } else{
+
+        iba_snif <- map_uf %>%
+            dplyr::filter(
+                mapeamento == "IBÁ - Não identificado",
+                uf == abrangecia_uf
+            )
+
+    }
+
+    # Fazer sumarização da base do SNIF
+
         dplyr::filter(mapeamento == "IBÁ - Não identificado") %>%
         dplyr::group_by(ano_base, genero) %>%
         dplyr::summarise(area_ha = sum(area_ha, na.rm = TRUE)) %>%
         dplyr::filter(ano_base %in% c("2006", "2007", "2008"))
 
 
+    # Fazer sumarização da base do relatório 2020
     iba_relatorio <- map_uf %>%
         dplyr::filter(mapeamento == "IB\u00C1 - Relat\u00F3rio Anual 2020") %>%
         dplyr::group_by(ano_base, genero) %>%
         dplyr::summarise(area_ha = sum(area_ha, na.rm = TRUE))
 
-
+    # Juntar as duas bases
     iba <- dplyr::bind_rows(iba_snif, iba_relatorio) %>%
         dplyr::mutate(
             genero = factor(
@@ -34,11 +56,12 @@ plotar_historico_brasil <- function(mapeamento = c("IBA", "IBGE"),
         )
 
 
-    # Definir configurações geraisa para o gráfico
-    sysfonts::font_add_google("Crimson Text",
-                              "Crimson")
+    # Adicionar fonte de texto necessária
+    sysfonts::font_add_google("Crimson Text","Crimson")
     showtext::showtext.auto()
 
+
+    # Definir configurações gerais para o gráfico
     config_plot <-
         c(
             "eucalipto" = "#35B779",
@@ -46,11 +69,10 @@ plotar_historico_brasil <- function(mapeamento = c("IBA", "IBGE"),
             "outros" = "#31688E",
             "background" = "#F5F5F2",
             "text" = "#22211D",
-            "title_fam" = "IBM Plex Sans SemiBold",
             "text_fam" = "Crimson",
             "eixo_x_title" = "Ano-base",
             "eixo_y_title" = "Área (Milhões de hectares)",
-            "title" = " - Histórico de área plantada por gênero, considerando informações do ",
+            "title" = " - Histórico de área plantada por gênero, considerando informações do IBÁ",
             "caption" = "**@Dataviz:** *Pacote R - maykongpedro/plantiosflorestais*"
         )
 
@@ -62,35 +84,31 @@ plotar_historico_brasil <- function(mapeamento = c("IBA", "IBGE"),
     # )
 
     # OPção com quebra de linha na fonte
-    subtitulo_iba  <- paste0("Série histórica de 2006 a 2008 baseada nos dados do IBÁ",
-                             " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
-                             " os dados utilizados são referentes ao **Relatório Anual 2020**.",
-                             "<br><br>**Fonte dos dados:** <br>2006-2008: IBÁ <br>2009-2017: Pöyry & IBÁ <br>2018-2019: FGV & IBÁ"
-    )
+    # subtitulo_iba  <- paste0("Série histórica de 2006 a 2008 baseada nos dados do IBÁ",
+    #                          " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
+    #                          " os dados utilizados são referentes ao **Relatório Anual 2020**.",
+    #                          "<br><br>**Fonte dos dados:** <br>2006-2008: IBÁ <br>2009-2017: Pöyry & IBÁ <br>2018-2019: FGV & IBÁ"
+    # )
 
+    # # opção sem quebra de linha na  nem itálico
+    # subtitulo_iba  <- paste0("Série histórica de 2006 a 2008 baseada nos dados do IBÁ",
+    #                          " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
+    #                          " os dados utilizados são referentes ao **Relatório Anual 2020**.",
+    #                          "<br><br>**Fonte dos dados:** 2006-2008: IBÁ | ",
+    #                          "2009-2017: Pöyry & IBÁ | ",
+    #                          "2018-2019: FGV & IBÁ"
+    # )
 
+    # Definir subtítulo
     # opção sem quebra de linha na fonte
     subtitulo_iba  <- paste0("Série histórica de 2006 a 2008 baseada nos dados do IBÁ",
-                             " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
+                             " disponilizados pelo **SNIF**.", "<br>Para os anos de 2009 a 2019",
                              " os dados utilizados são referentes ao **Relatório Anual 2020**.",
                              "<br><br>**Fonte dos dados:** *2006-2008*: IBÁ | ",
                              "*2009-2017*: Pöyry & IBÁ | ",
                              "*2018-2019*: FGV & IBÁ"
     )
 
-    # opção sem quebra de linha na  nem itálico
-    subtitulo_iba  <- paste0("Série histórica de 2006 a 2008 baseada nos dados do IBÁ",
-                             " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
-                             " os dados utilizados são referentes ao **Relatório Anual 2020**.",
-                             "<br><br>**Fonte dos dados:** 2006-2008: IBÁ | ",
-                             "2009-2017: Pöyry & IBÁ | ",
-                             "2018-2019: FGV & IBÁ"
-    )
-
-
-    subtitulo_iba
-    mapeamento_usado <- "IBÁ"
-    local <- "Brasil"
 
 
     iba %>%
@@ -111,8 +129,7 @@ plotar_historico_brasil <- function(mapeamento = c("IBA", "IBGE"),
 
         ggplot2::ggtitle(
             paste0(local,
-                   config_plot[["title"]],
-                   mapeamento_usado),
+                   config_plot[["title"]]),
             subtitle = glue::glue(subtitulo_iba)
             ) +
 
