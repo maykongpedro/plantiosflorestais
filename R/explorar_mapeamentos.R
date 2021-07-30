@@ -37,7 +37,7 @@ mapeamentos_disponiveis <- function(){
 #' @export
 #'
 #' @examples
-mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
+mapeamento_disponivel_uf  <- function(unidade_federativa = "PR"){
 
     # Check de input
     if (stringr::str_detect(unidade_federativa, "[A-Z]{2}") == FALSE) {
