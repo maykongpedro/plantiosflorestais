@@ -4,7 +4,6 @@
 # usethis::use_pipe()
 # devtools::document()
 
-
 # Fazer download dos mapeamentos faxinados --------------------------------
 
 # obter links
@@ -40,5 +39,3 @@ mapeamentos_estados %>% tibble::view()
 
 usethis::use_data(mapeamentos_municipios, overwrite = TRUE)
 usethis::use_data(mapeamentos_estados, overwrite = TRUE)
-
-
