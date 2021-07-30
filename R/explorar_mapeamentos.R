@@ -157,6 +157,9 @@ generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
 #' @examples
 serie_historicas_disponiveis <- function(){
 
+    # Desativar warning do get dupes
+    options("get_dupes.grouped_warning" = FALSE)
+
     # Mapeamentos de municipios
     map_muni <- plantiosflorestais::mapeamentos_municipios
     muni <- map_muni %>%
@@ -167,6 +170,7 @@ serie_historicas_disponiveis <- function(){
         dplyr::mutate(base ="mapeamentos_municipios") %>%
         dplyr::relocate(base, .before = mapeamento)
     muni
+
 
     # Mapeamento de estados
     map_uf <- plantiosflorestais::mapeamentos_estados
