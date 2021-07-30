@@ -23,5 +23,8 @@ utils::globalVariables(c(
     "ano_base",
     "uf",
     "area_ha",
-    "dupe_count"
+    "dupe_count",
+    "total_label",
+    "maximo",
+    "total"
 ))

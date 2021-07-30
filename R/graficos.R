@@ -1,12 +1,11 @@
 
-
-
 #' Plotar Grafico de Historico com os dados do IBA
 #'
 #' Realiza um plot simples com os dados de mapeamento do IBA, tanto dos dados
-#' disponibilizados pelo SNIF quanto dos apresentados no Relatorio Anual 2020.
-#'
+#' disponibilizados pelo SNIF quanto dos dados apresentados no Relatorio Anual 2020.
 #' O plot pode ser para um estado especifico ou geral.
+#'
+#' A funcao pode demorar um pouco para demonstrar o resultado.
 #'
 #' @param abrangecia_uf Filtro de estado, como "PR", por exemplo. O padrao e NULL,
 #' para trazer dados do Brasil inteiro.
@@ -17,7 +16,11 @@
 #'
 #' @examples
 plotar_historico_iba <- function(abrangecia_uf = NULL,
-                                        exibir_rotulos = FALSE){
+                                 exibir_rotulos = FALSE) {
+
+
+    # Gera um warning por conta d fonte usada, entao suprime com a funcao abaixo
+    suppressWarnings({
 
     # Base
     map_uf <- plantiosflorestais::mapeamentos_estados
@@ -55,7 +58,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
 
     }
 
-    # Fazer sumarizaç\u00E3o da base do SNIF
+    # Fazer sumariza\u00E7\u00E3o da base do SNIF
     iba_snif <- iba_snif_abrangencia %>%
         dplyr::group_by(ano_base, genero) %>%
         dplyr::summarise(area_ha = sum(area_ha, na.rm = TRUE)) %>%
@@ -63,7 +66,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
 
 
 
-    # Fazer sumarizaç\u00E3o da base do relat\u00F3rio 2020
+    # Fazer sumariza\u00E7\u00E3o da base do relat\u00F3rio 2020
     iba_relatorio <- iba_relatorio_abrangecia %>%
         dplyr::group_by(ano_base, genero) %>%
         dplyr::summarise(area_ha = sum(area_ha, na.rm = TRUE))
@@ -94,7 +97,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
     showtext::showtext_auto()
 
 
-    # Definir configuraç\u00F5es gerais para o gr\u00C1fico
+    # Definir configura\u00E7\u00F5es gerais para o gr\u00C1fico
     config_plot <-
         c(
             "eucalipto" = "#35B779",
@@ -105,42 +108,42 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
             "text_fam" = "Crimson",
             "eixo_x_title" = "Ano-base",
             "eixo_y_title" = "\u00C1rea (Milh\u00F5es de hectares)",
-            "title" = " - Hist\u00F3rico de \u00C1rea plantada por g\u00EAnero, considerando informaç\u00F5es do IB\u00C1",
+            "title" = " - Hist\u00F3rico de \u00C1rea plantada por g\u00EAnero, considerando informa\u00E7\u00F5es do IB\u00C1",
             "caption" = "**@Dataviz:** *Pacote R - maykongpedro/plantiosflorestais*"
         )
 
-    #Opç\u00E3o simples
+    #Op\u00E7\u00E3o simples
     # subtitulo_iba  <- paste0("S\u00E9rie hist\u00F3rica de 2006 a 2008 baseada nos dados do IB\u00C1",
     #                          " disponilizados pelo SNIF.", " Para os anos de 2009 a 2019",
     #                          " os dados utilizados s\u00E3o referentes ao Relat\u00F3rio Anual 2020.",
     #                          " Fonte: 2006-2008: IB\u00C1 |  2009-2017: P\u00F6yry & IB\u00C1 | 2018-2019: FGV & IB\u00C1"
     # )
 
-    # OPç\u00E3o com quebra de linha na fonte
+    # OP\u00E7\u00E3o com quebra de linha na fonte
     # subtitulo_iba  <- paste0("S\u00E9rie hist\u00F3rica de 2006 a 2008 baseada nos dados do IB\u00C1",
     #                          " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
     #                          " os dados utilizados s\u00E3o referentes ao **Relat\u00F3rio Anual 2020**.",
     #                          "<br><br>**Fonte dos dados:** <br>2006-2008: IB\u00C1 <br>2009-2017: P\u00F6yry & IB\u00C1 <br>2018-2019: FGV & IB\u00C1"
     # )
 
-    # # opç\u00E3o sem quebra de linha na  nem it\u00C1lico
-    subtitulo_iba  <- paste0("S\u00E9rie hist\u00F3rica de 2006 a 2008 baseada nos dados do IB\u00C1",
-                             " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
-                             " os dados utilizados s\u00E3o referentes ao **Relat\u00F3rio Anual 2020**.",
-                             "<br><br>**Fonte dos dados:** 2006-2008: IB\u00C1 | ",
-                             "2009-2017: P\u00F6yry & IB\u00C1 | ",
-                             "2018-2019: FGV & IB\u00C1"
-    )
+    # # op\u00E7\u00E3o sem quebra de linha na  nem it\u00C1lico
+    # subtitulo_iba  <- paste0("S\u00E9rie hist\u00F3rica de 2006 a 2008 baseada nos dados do IB\u00C1",
+    #                          " disponilizados pelo SNIF.", "<br>Para os anos de 2009 a 2019",
+    #                          " os dados utilizados s\u00E3o referentes ao **Relat\u00F3rio Anual 2020**.",
+    #                          "<br><br>**Fonte dos dados:** 2006-2008: IB\u00C1 | ",
+    #                          "2009-2017: P\u00F6yry & IB\u00C1 | ",
+    #                          "2018-2019: FGV & IB\u00C1"
+    # )
 
     # Definir subtítulo
-    #opç\u00E3o sem quebra de linha na fonte
-    # subtitulo_iba  <- paste0("S\u00E9rie hist\u00F3rica de 2006 a 2008 baseada nos dados do IB\u00C1",
-    #                          " disponilizados pelo **SNIF**.", "<br>Para os anos de 2009 a 2019",
-    #                          " os dados utilizados s\u00E3o referentes ao **Relat\u00F3rio Anual 2020**.",
-    #                          "<br><br>**Fonte dos dados:** *2006-2008*: IB\u00C1 | ",
-    #                          "*2009-2017*: P\u00F6yry & IB\u00C1 | ",
-    #                          "*2018-2019*: FGV & IB\u00C1"
-    # )
+    #op\u00E7\u00E3o sem quebra de linha na fonte
+    subtitulo_iba  <- paste0("S\u00E9rie hist\u00F3rica de 2006 a 2008 baseada nos dados do IB\u00C1",
+                             " disponilizados pelo **SNIF**.", "<br>Para os anos de 2009 a 2019",
+                             " os dados utilizados s\u00E3o referentes ao **Relat\u00F3rio Anual 2020**.",
+                             "<br><br>**Fonte dos dados:** *2006-2008*: IB\u00C1 | ",
+                             "*2009-2017*: P\u00F6yry & IB\u00C1 | ",
+                             "*2018-2019*: FGV & IB\u00C1"
+    )
 
 
     # Corrgindo a vari\u00C1vel de localidade/abrang\u00EAncia para o t\u00EDtulo
@@ -152,7 +155,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
 
 
     # Definindo limite do eixo y
-    options(scipen=999)
+    #options(scipen=999)
     max_lim <- iba %>%
         dplyr::group_by(ano_base) %>%
         dplyr::summarise(area_ha = sum(area_ha)) %>%
@@ -165,14 +168,30 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
 
 
     # Gerar totais para as labels
-    totais <- iba %>%
+   totais <-
+
+        iba %>%
         dplyr::group_by(ano_base) %>%
         dplyr::summarise(total = sum(area_ha/10^6)) %>%
         dplyr::mutate(
-            total = round(total, 1),
-            total_label = sprintf("%1.1f M.", total)
+            total = round(total, 2),
+            total_label = sprintf("%1.2f M.", total)
             )
-    totais
+   totais
+
+
+
+
+   iba %>%
+       dplyr::group_by(ano_base,genero) %>%
+       dplyr::summarise(total = sum(area_ha/10^6)) %>%
+       dplyr::mutate(
+           total = round(total, 2),
+           total_label = sprintf("%1.2f M.", total)
+       )
+
+
+
 
     # Gerar plot
     plot <- iba %>%
@@ -185,8 +204,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
         ))+
         ggplot2::scale_y_continuous(
             expand = c(0, 0),
-            limits = c(0, max_lim),
-            labels = scales::number_format(accuracy = .2)
+            limits = c(0, max_lim)
         ) +
         ggplot2::scale_fill_manual(
             breaks = c("Outros",
@@ -225,8 +243,21 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
             plot.caption = ggtext::element_markdown()
         )
 
-    plot
-    # Plotagem final com r\u00F3tulos
+
+
+    # Rótulos para cada divisão da barra
+    # plot +
+    #     ggplot2::geom_text(
+    #         ggplot2::aes(
+    #             x = ano_base,
+    #             y = area_ha,
+    #             label = round(area_ha,2),
+    #             group = genero
+    #         ),
+    #         position = ggplot2::position_stack(vjust = .5),
+    #     )
+
+    # Plotagem final com rótulos
     if(exibir_rotulos == TRUE){
 
         plot +
@@ -235,6 +266,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
                     x = ano_base,
                     y = total,
                     label = total_label,
+                    #label = total,
                     vjust = -1.5
                 ),
                 size = 4,
@@ -248,15 +280,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
 
     }
 
+    })
+
 }
 
-#
-# sysfonts::font_add("Crimson",
-#          regular = "data-raw/Crimson_Text/CrimsonText-Regular.ttf",
-#          bold = "data-raw/Crimson_Text/CrimsonText-Bold.ttf",
-#          italic = "data-raw/Crimson_Text/CrimsonText-Italic.ttf",
-#          bolditalic = "data-raw/Crimson_Text/CrimsonText-BoldItalic.ttf")
-
-## Automatically use showtext to render plots
-# showtext_auto()
-# plotar_historico_brasil_iba()
