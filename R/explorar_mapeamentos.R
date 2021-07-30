@@ -101,25 +101,25 @@ mapeamento_existente_uf  <- function(unidade_federativa = "PR"){
 #' Generos existentes nos mapeamentos disponiveis
 #'
 #' Resume quais sao os generos dos plantios florestais existentes nas bases utilizadas
-#' no pacote.
+#' no pacote. Opcionalmente pode exibir o genero por mapeamento.
 #'
 #' @param exibir_nome_mapeamento padrao = FALSE, se TRUE exibe o nome do mapeamento
 #'
-#' @return Uma tibble
+#' @return Uma tibble com os generos disponiveis ou com genero por mapeamento
 #' @export
 #'
 #' @examples
 generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
 
-
+    exibir_nome_mapeamento = FALSE
     map_muni <- plantiosflorestais::mapeamentos_municipios
 
     if (exibir_nome_mapeamento == TRUE) {
-        map_muni %>%
+        generos_muni <- map_muni %>%
             dplyr::distinct(genero, mapeamento)
 
     } else {
-        map_muni %>%
+        generos_muni <-map_muni %>%
             dplyr::distinct(genero)
     }
 
@@ -128,13 +128,23 @@ generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
     map_uf <- plantiosflorestais::mapeamentos_estados
 
     if (exibir_nome_mapeamento == TRUE) {
-        map_uf %>%
+        generos_uf <- map_uf %>%
             dplyr::distinct(genero, mapeamento)
 
     } else {
-        map_uf %>%
+        generos_uf <- map_uf %>%
             dplyr::distinct(genero)
+            #dplyr::mutate(base = "mapeamentos_estados")
     }
+
+
+    # Empilhar as duas bases
+    genero_disponivel <- dplyr::bind_rows(generos_muni, generos_uf) %>%
+        dplyr::filter(genero != "Todos") %>%
+        dplyr::distinct()
+
+    genero_disponivel
+
 }
 
 

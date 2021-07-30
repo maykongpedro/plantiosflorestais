@@ -10,9 +10,9 @@ generos_plantios_disponiveis(exibir_nome_mapeamento = FALSE)
 \item{exibir_nome_mapeamento}{padrao = FALSE, se TRUE exibe o nome do mapeamento}
 }
 \value{
-Uma tibble
+Uma tibble com os generos disponiveis ou com genero por mapeamento
 }
 \description{
 Resume quais sao os generos dos plantios florestais existentes nas bases utilizadas
-no pacote.
+no pacote. Opcionalmente pode exibir o genero por mapeamento.
 }
