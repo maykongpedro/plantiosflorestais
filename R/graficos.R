@@ -18,7 +18,6 @@
 plotar_historico_iba <- function(abrangecia_uf = NULL,
                                  exibir_rotulos = FALSE) {
 
-
     # Gera um warning por conta d fonte usada, entao suprime com a funcao abaixo
     suppressWarnings({
 
