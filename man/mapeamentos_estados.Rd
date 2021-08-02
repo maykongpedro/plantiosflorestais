@@ -5,7 +5,7 @@
 \alias{mapeamentos_estados}
 \title{Dados sobre os mapeamentos em nivel estadual de plantios florestais no Brasil}
 \format{
-Uma tibble com 976 linhas e 10 colunas, contendo:
+Uma tibble com 989 linhas e 10 colunas, contendo:
 \describe{
 \item{mapeamento}{Nome do mapeamento ou relatorio de origem}
 \item{fonte}{Fonte dos dados, nao e necessariamente o responsavel pelo

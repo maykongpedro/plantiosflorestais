@@ -32,7 +32,7 @@ do GitHub usando os seguintes comandos:
 ``` r
 # install.packages("devtools")
 devtools::install_github("maykongpedro/plantiosflorestais")
-#library(plantiosflorestais)
+library(plantiosflorestais)
 ```
 
 ## Acesso às bases
@@ -55,7 +55,7 @@ As colunas contidas nessas bases são as seguintes:
 
 ``` r
 dplyr::glimpse(mapeamento_municipios)
-#> Rows: 32,558
+#> Rows: 32,536
 #> Columns: 10
 #> $ mapeamento      <chr> "IBGE - Não identificado", "IBGE - Não identificado", ~
 #> $ fonte           <chr> "IBGE - Dados disponibilizados pelo SNIF", "IBGE - Dad~

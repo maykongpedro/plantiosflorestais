@@ -3,7 +3,7 @@
 #' Base de dados contendo os mapeamentos de plantios florestais no Brasil,
 #' a nivel de municipio.
 #'
-#' @format Uma tibble com 32,588 linhas e 10 colunas, contendo:
+#' @format Uma tibble com 32,558 linhas e 10 colunas, contendo:
 #' \describe{
 #'   \item{mapeamento}{Nome do mapeamento ou relatorio de origem}
 #'   \item{fonte}{Fonte dos dados, nao e necessariamente o responsavel pelo
@@ -28,7 +28,7 @@
 #' Base de dados contendo os mapeamentos de plantios florestais no Brasil,
 #' a nivel de estado (uniao federativa).
 #'
-#' @format Uma tibble com 976 linhas e 10 colunas, contendo:
+#' @format Uma tibble com 989 linhas e 10 colunas, contendo:
 #' \describe{
 #'   \item{mapeamento}{Nome do mapeamento ou relatorio de origem}
 #'   \item{fonte}{Fonte dos dados, nao e necessariamente o responsavel pelo

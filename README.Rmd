@@ -35,7 +35,7 @@ Você pode instalar a versão de desenvolvimento desse pacote diretamente do Git
 ``` r
 # install.packages("devtools")
 devtools::install_github("maykongpedro/plantiosflorestais")
-#library(plantiosflorestais)
+library(plantiosflorestais)
 ```
 
 ## Acesso às bases
