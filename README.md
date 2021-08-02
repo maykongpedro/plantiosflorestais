@@ -21,6 +21,9 @@ Repositório](https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-pl
 Os mapeamentos disponíveis podem ser verificados no tópico “Fonte de
 dados” desse `README`.
 
+Todos uso dos dados aqui contidos deve ser feito com a citação da fonte
+do relatório envolvido.
+
 ## Instalação
 
 Você pode instalar a versão de desenvolvimento desse pacote diretamente
@@ -29,6 +32,7 @@ do GitHub usando os seguintes comandos:
 ``` r
 # install.packages("devtools")
 devtools::install_github("maykongpedro/plantiosflorestais")
+#library(plantiosflorestais)
 ```
 
 ## Acesso às bases
@@ -40,9 +44,55 @@ nível estadual ou regional.
 
 As mesmas podem ser acessadas pelos seguintes comandos do pacote:
 
+``` r
+mapeamento_municipios <- plantiosflorestais::mapeamentos_municipios
+mapeamento_estados <- plantiosflorestais::mapeamentos_estados
+```
+
 As colunas contidas nessas bases são as seguintes:
 
+### Mapeamento em nível de municípios:
+
+``` r
+dplyr::glimpse(mapeamento_municipios)
+#> Rows: 32,558
+#> Columns: 10
+#> $ mapeamento      <chr> "IBGE - Não identificado", "IBGE - Não identificado", ~
+#> $ fonte           <chr> "IBGE - Dados disponibilizados pelo SNIF", "IBGE - Dad~
+#> $ ano_base        <chr> "2014", "2015", "2016", "2014", "2015", "2016", "2014"~
+#> $ uf              <chr> "RO", "RO", "RO", "RO", "RO", "RO", "RO", "RO", "RO", ~
+#> $ estado          <chr> "Rondônia", "Rondônia", "Rondônia", "Rondônia", "Rondô~
+#> $ municipio       <chr> "Alta Floresta D'oeste", "Alta Floresta D'oeste", "Alt~
+#> $ code_muni       <dbl> 1100015, 1100015, 1100015, 1100015, 1100015, 1100015, ~
+#> $ nucleo_regional <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA~
+#> $ genero          <chr> "Eucalyptus", "Eucalyptus", "Eucalyptus", "Pinus", "Pi~
+#> $ area_ha         <dbl> 0, 0, 0, 0, 0, 0, 250, 2425, 3316, 0, 0, 0, 0, 0, 0, 3~
+```
+
+### Mapeamento em nível de estados:
+
+``` r
+dplyr::glimpse(mapeamento_estados)
+#> Rows: 989
+#> Columns: 10
+#> $ mapeamento      <chr> "IBÁ - Relatório Anual 2020", "IBÁ - Relatório Anual 2~
+#> $ fonte           <chr> "Pöyry e IBÁ", "Pöyry e IBÁ", "Pöyry e IBÁ", "Pöyry e ~
+#> $ ano_base        <chr> "2009", "2010", "2011", "2012", "2013", "2014", "2015"~
+#> $ uf              <chr> "MG", "MG", "MG", "MG", "MG", "MG", "MG", "MG", "MG", ~
+#> $ estado          <chr> "Minas Gerais", "Minas Gerais", "Minas Gerais", "Minas~
+#> $ regiao          <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA~
+#> $ nucleo_regional <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA~
+#> $ corede          <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA~
+#> $ genero          <chr> "Eucalyptus", "Eucalyptus", "Eucalyptus", "Eucalyptus"~
+#> $ area_ha         <dbl> 1300000, 1400000, 1401787, 1438971, 1404429, 1400232, ~
+```
+
 ## Funções disponíveis
+
+O pacote contém 7 funções simples, sendo:
+
+-Quatro delas para explorar os dados -Uma para plotar um dos mapeamentos
+-Duas para exportar os dados
 
 ## Fonte de dados
 
@@ -70,9 +120,3 @@ podem ser encontrados nos respectivos arquivos originais.
 
 Toda informação utilizada advinda desse pacote deve ser devidamente
 citada a fonte, usando o mapeamento de referência.
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.

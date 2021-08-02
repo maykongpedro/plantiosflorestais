@@ -26,6 +26,8 @@ O repositório que contém todo o processo de extração e limpeza dos dados pod
 
 Os mapeamentos disponíveis podem ser verificados no tópico "Fonte de dados" desse `README`.
 
+Todos uso dos dados aqui contidos deve ser feito com a citação da fonte do relatório envolvido.
+
 
 ## Instalação
 
@@ -33,6 +35,7 @@ Você pode instalar a versão de desenvolvimento desse pacote diretamente do Git
 ``` r
 # install.packages("devtools")
 devtools::install_github("maykongpedro/plantiosflorestais")
+#library(plantiosflorestais)
 ```
 
 ## Acesso às bases
@@ -40,21 +43,37 @@ Os dados presentes nesse pacote foram extraídos e organizados gerando duas base
 
 As mesmas podem ser acessadas pelos seguintes comandos do pacote:
 
-```{r example, eval=FALSE, include=FALSE}
+```{r example, echo=TRUE}
 
-plantiosflorestais::mapeamentos_municipios
-plantiosflorestais::mapeamentos_estados
+mapeamento_municipios <- plantiosflorestais::mapeamentos_municipios
+mapeamento_estados <- plantiosflorestais::mapeamentos_estados
 
 ```
 
 As colunas contidas nessas bases são as seguintes:
 
+### Mapeamento em nível de municípios:
+```{r map_muni, echo=TRUE}
 
+dplyr::glimpse(mapeamento_municipios)
 
+```
 
+### Mapeamento em nível de estados:
+
+```{r map_uf}
+dplyr::glimpse(mapeamento_estados)
+
+```
 
 
 ## Funções disponíveis
+O pacote contém 7 funções simples, sendo:
+
+-Quatro delas para explorar os dados
+-Uma para plotar um dos mapeamentos
+-Duas para exportar os dados
+
 
 
 ## Fonte de dados
@@ -79,9 +98,3 @@ Cada relatório ou mapeamento que foi usado nesse pacote está destacado na tabe
 O presente pacote não dispensa a leitura e consulta dos relatórios oficiais, apenas consolida números de áreas. Toda explicação metodológica sobre os mapeamentos e noção de contexto para cada valor podem ser encontrados nos respectivos arquivos originais.
 
 Toda informação utilizada advinda desse pacote deve ser devidamente citada a fonte, usando o mapeamento de referência.
-
-
-
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
-
