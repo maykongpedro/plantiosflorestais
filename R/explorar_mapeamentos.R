@@ -154,7 +154,7 @@ generos_plantios_disponiveis <- function(exibir_nome_mapeamento = FALSE){
 #' @export
 #'
 #' @examples
-serie_historicas_disponiveis <- function(){
+series_historicas_disponiveis <- function(){
 
     # Desativar warning do get dupes
     options("get_dupes.grouped_warning" = FALSE)
