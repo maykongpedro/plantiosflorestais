@@ -1,13 +1,13 @@
 Package: plantiosflorestais
-Title: Base de dados dos mapeamentos públicos de plantios florestais disponíveis no Brasil
+Title: Base De Dados Dos Mapeamentos Publicos De Plantios Florestais Disponiveis No Brasil
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Maykon",
            family = "Pedro",
            role = c("aut", "cre"),
-           email = "maykonglaffite@gmail.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "maykonglaffite@gmail.com"
+           )
+Description: Consolida e facilita o acesso aos dados de area de mapeamento de plantios florestais do Brasil. Fornecendo duas bases principais: uma para os dados a nivel de municipio e outra para os dados a nivel de estado.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
