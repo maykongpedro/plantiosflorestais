@@ -137,7 +137,6 @@ disponíveis nas bases.
 
 ``` r
 library(magrittr)
-#> Warning: package 'magrittr' was built under R version 4.0.3
 plantiosflorestais::mapeamentos_disponiveis() %>%
     head() %>% 
     kableExtra::kable()
@@ -348,7 +347,7 @@ Por municÍpio
 -   **`generos_plantios_disponiveis()`**
 
 Exibe os gêneros existentes no pacote. Pode ou não exibir o nome do
-mapeamento. O argumento padrõa é `FALSE`, para não exibir o nome dos
+mapeamento. O argumento padrão é `FALSE`, para não exibir o nome dos
 mapeamentos.
 
 ``` r
@@ -595,7 +594,7 @@ O primeiro argumento recebe uma unidade federativa como string, “PR”,
 por exemplo. Caso não seja declarado nenhum estado, o gráfico será com
 os dados nacionais. O segundo argumento define se os rótulos de totais
 das barras devem ser ou não exibidos, com `TRUE` ou `FALSE`. O padrão é
-como `FALSE`.
+`FALSE`.
 
 ``` r
 plantiosflorestais::plotar_historico_iba()
@@ -603,6 +602,23 @@ plantiosflorestais::plotar_historico_iba()
 
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
-### exportar\_xlsx()
+``` r
+plantiosflorestais::plotar_historico_iba(abrangecia_uf = "SP", exibir_rotulos = TRUE)
+```
 
-### exportar\_csv()
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+
+-   **`exportar_xlsx()`**
+
+Função que tem como objetivo exportar as duas bases do pacote em forma
+de planilha excel. As duas bases são exportadas para um arquivo .XLSX,
+com duas planilhas internas, cada uma representando uma base. O
+argumento padrão a ser passado é o caminho do local que o usuário deseja
+salvar a base. Os códigos a seguir apresentam alguns exemplos:
+
+-   **`exportar_csv()`**
+
+A lógica é a mesma da função anterior, porém o objetivo é exportar para
+um arquivo de texto separado por ‘;’ (ponto e vírgula) com *enconding*
+UTF-8. Como são duas bases, a função gera dois arquivos .CSV. Os códigos
+abaixo apresentam alguns exemplos.
