@@ -130,7 +130,7 @@ O pacote contém 7 funções simples, sendo:
 
 As funções podem ser verificadas a seguir:
 
--   **`mapeamentos_disponiveis()`**
+**`mapeamentos_disponiveis()`**
 
 Função utilizada para verificar rapidamente quais os mapeamentos
 disponíveis nas bases.
@@ -227,7 +227,7 @@ Pöyry e IBÁ
 </tbody>
 </table>
 
--   **`mapeamento_disponivel_uf()`**
+**`mapeamento_disponivel_uf()`**
 
 Função utilizada para verificar a área dos mapeamentos existentes para
 uma determinada unidade federativa. Se não definida nenhuma, o padrão é
