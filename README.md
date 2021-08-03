@@ -21,8 +21,8 @@ Repositório](https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-pl
 Os mapeamentos disponíveis podem ser verificados no tópico “Fonte de
 dados” desse `README`.
 
-Todos uso dos dados aqui contidos deve ser feito com a citação da fonte
-do relatório envolvido.
+Todos uso dos dados aqui contidos deve ser feito com a **citação da
+fonte** do relatório envolvido.
 
 ## Instalação
 
@@ -87,12 +87,9 @@ dplyr::glimpse(mapeamento_estados)
 #> $ area_ha         <dbl> 1300000, 1400000, 1401787, 1438971, 1404429, 1400232, ~
 ```
 
-## Funções disponíveis
-
-O pacote contém 7 funções simples, sendo:
-
--Quatro delas para explorar os dados -Uma para plotar um dos mapeamentos
--Duas para exportar os dados
+A documentação das bases pode ser acessada pelo comando
+`?plantiosflorestais::mapeamentos_municipios` e
+`?plantiosflorestais::mapeamentos_estado` .
 
 ## Fonte de dados
 
@@ -120,3 +117,490 @@ podem ser encontrados nos respectivos arquivos originais.
 
 Toda informação utilizada advinda desse pacote deve ser devidamente
 citada a fonte, usando o mapeamento de referência.
+
+## Funções disponíveis
+
+O pacote contém 7 funções simples, sendo:
+
+-   Quatro delas para explorar os dados
+
+-   Uma para plotar um dos mapeamentos
+
+-   Duas para exportar os dados
+
+### mapeamentos\_disponiveis()
+
+Função utilizada para verificar rapidamente quais os mapeamentos
+disponíveis nas bases.
+
+``` r
+library(magrittr)
+#> Warning: package 'magrittr' was built under R version 4.0.3
+plantiosflorestais::mapeamentos_disponiveis() %>%
+    head() %>% 
+    kableExtra::kable()
+```
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+base
+</th>
+<th style="text-align:left;">
+mapeamento
+</th>
+<th style="text-align:left;">
+fonte
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:left;">
+IBGE - Dados disponibilizados pelo SNIF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+Famato - Diagnóstico de florestas plantadas do Estado de Mato Grosso -
+2013
+</td>
+<td style="text-align:left;">
+Imea
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+IFPR - Mapeamento dos Plantios Florestais do Estado do Paraná
+</td>
+<td style="text-align:left;">
+IFPR e SFB
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017
+</td>
+<td style="text-align:left;">
+AFUBRA, AGEFLOR, FEPAM, RDK e SEMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+AGEFLOR - O setor de base florestal no Rio Grande do Sul 2020
+</td>
+<td style="text-align:left;">
+Fepam, Codex, RDK e AGEFLOR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_estados
+</td>
+<td style="text-align:left;">
+IBÁ - Relatório Anual 2020
+</td>
+<td style="text-align:left;">
+Pöyry e IBÁ
+</td>
+</tr>
+</tbody>
+</table>
+
+### mapeamento\_disponivel\_uf()
+
+Função utilizada para verificar a área dos mapeamentos existentes para
+uma determinada unidade federativa. Se não definida nenhuma, o padrão é
+‘PR’.
+
+``` r
+plantiosflorestais::mapeamento_disponivel_uf(unidade_federativa = "SC") %>% 
+    head() %>% 
+    kableExtra::kable()
+```
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+ano\_base
+</th>
+<th style="text-align:left;">
+mapeamento
+</th>
+<th style="text-align:right;">
+area\_total\_ha
+</th>
+<th style="text-align:left;">
+abordagem
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2019
+</td>
+<td style="text-align:left;">
+IBÁ - Relatório Anual 2020
+</td>
+<td style="text-align:right;">
+642310
+</td>
+<td style="text-align:left;">
+Estadual
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018
+</td>
+<td style="text-align:left;">
+ACR - Anuário Estatistico 2019
+</td>
+<td style="text-align:right;">
+828856
+</td>
+<td style="text-align:left;">
+Por região
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018
+</td>
+<td style="text-align:left;">
+IBÁ - Relatório Anual 2020
+</td>
+<td style="text-align:right;">
+664238
+</td>
+<td style="text-align:left;">
+Estadual
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017
+</td>
+<td style="text-align:left;">
+IBÁ - Relatório Anual 2020
+</td>
+<td style="text-align:right;">
+659966
+</td>
+<td style="text-align:left;">
+Estadual
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017
+</td>
+<td style="text-align:left;">
+IBGE e PEVS - 2018
+</td>
+<td style="text-align:right;">
+994906
+</td>
+<td style="text-align:left;">
+Estadual
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016
+</td>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:right;">
+1015801
+</td>
+<td style="text-align:left;">
+Por municÍpio
+</td>
+</tr>
+</tbody>
+</table>
+
+### generos\_plantios\_disponiveis()
+
+Exibe os gêneros existentes no pacote. Pode ou não exibir o nome do
+mapeamento. O argumento padrõa é `FALSE`, para não exibir o nome dos
+mapeamentos.
+
+``` r
+plantiosflorestais::generos_plantios_disponiveis() %>% 
+    kableExtra::kable()
+```
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+genero
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Eucalyptus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pinus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Outros
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tectona
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Corte
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Acácia
+</td>
+</tr>
+</tbody>
+</table>
+
+``` r
+plantiosflorestais::generos_plantios_disponiveis(exibir_nome_mapeamento = TRUE) %>% 
+    head() %>% 
+    kableExtra::kable()
+```
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+mapeamento
+</th>
+<th style="text-align:left;">
+genero
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:left;">
+Eucalyptus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:left;">
+Pinus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:left;">
+Outros
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Famato - Diagnóstico de florestas plantadas do Estado de Mato Grosso -
+2013
+</td>
+<td style="text-align:left;">
+Eucalyptus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Famato - Diagnóstico de florestas plantadas do Estado de Mato Grosso -
+2013
+</td>
+<td style="text-align:left;">
+Tectona
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IFPR - Mapeamento dos Plantios Florestais do Estado do Paraná
+</td>
+<td style="text-align:left;">
+Corte
+</td>
+</tr>
+</tbody>
+</table>
+
+### series\_historicas\_disponiveis()
+
+Obtém os mapeamentos com séries históricas dentro das bases, e suas
+respectivas áreas.
+
+``` r
+plantiosflorestais::series_historicas_disponiveis() %>% 
+    head() %>% 
+    kableExtra::kable()
+```
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+base
+</th>
+<th style="text-align:left;">
+mapeamento
+</th>
+<th style="text-align:left;">
+ano\_base
+</th>
+<th style="text-align:right;">
+area\_total\_ha
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:left;">
+2014
+</td>
+<td style="text-align:right;">
+9366741
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:left;">
+2015
+</td>
+<td style="text-align:right;">
+9937947
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_municipios
+</td>
+<td style="text-align:left;">
+IBGE - Não identificado
+</td>
+<td style="text-align:left;">
+2016
+</td>
+<td style="text-align:right;">
+10023076
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_estados
+</td>
+<td style="text-align:left;">
+AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017
+</td>
+<td style="text-align:left;">
+2006
+</td>
+<td style="text-align:right;">
+508000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_estados
+</td>
+<td style="text-align:left;">
+AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017
+</td>
+<td style="text-align:left;">
+2007
+</td>
+<td style="text-align:right;">
+563600
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mapeamentos\_estados
+</td>
+<td style="text-align:left;">
+AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017
+</td>
+<td style="text-align:left;">
+2008
+</td>
+<td style="text-align:right;">
+638800
+</td>
+</tr>
+</tbody>
+</table>
+
+### plotar\_historico\_iba()
+
+Função para plotagem de gráficos. Realiza o plot por estado ou para o
+país com os dados da Indústria Brasileira de Árvores. Possui dois
+argumentos: `abrangecia_uf` e `exibir_rotulos`.
+
+O primeiro argumento recebe uma unidade federativa como string, “PR”,
+por exemplo. Caso não seja declarado nenhum estado, o gráfico será com
+os dados nacionais. O segundo argumento define se os rótulos de totais
+das barras devem ser ou não exibidos, com `TRUE` ou `FALSE`. O padrão é
+como `FALSE`.
+
+``` r
+plantiosflorestais::plotar_historico_iba()
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" height="12" />
+
+### exportar\_xlsx()
+
+### exportar\_csv()

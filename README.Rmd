@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # plantiosflorestais
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 Este pacote tem como objetivo disponibilizar dados de área de mapeamentos públicos de plantios florestais no Brasil.
@@ -26,12 +27,12 @@ O repositório que contém todo o processo de extração e limpeza dos dados pod
 
 Os mapeamentos disponíveis podem ser verificados no tópico "Fonte de dados" desse `README`.
 
-Todos uso dos dados aqui contidos deve ser feito com a citação da fonte do relatório envolvido.
-
+Todos uso dos dados aqui contidos deve ser feito com a **citação da fonte** do relatório envolvido.
 
 ## Instalação
 
 Você pode instalar a versão de desenvolvimento desse pacote diretamente do GitHub usando os seguintes comandos:
+
 ``` r
 # install.packages("devtools")
 devtools::install_github("maykongpedro/plantiosflorestais")
@@ -39,6 +40,7 @@ library(plantiosflorestais)
 ```
 
 ## Acesso às bases
+
 Os dados presentes nesse pacote foram extraídos e organizados gerando duas bases principais, uma para os mapeamentos que continham dados para municípios, e outra para os mapeamentos que continham dados gerais, em nível estadual ou regional.
 
 As mesmas podem ser acessadas pelos seguintes comandos do pacote:
@@ -53,6 +55,7 @@ mapeamento_estados <- plantiosflorestais::mapeamentos_estados
 As colunas contidas nessas bases são as seguintes:
 
 ### Mapeamento em nível de municípios:
+
 ```{r map_muni, echo=TRUE}
 
 dplyr::glimpse(mapeamento_municipios)
@@ -66,35 +69,98 @@ dplyr::glimpse(mapeamento_estados)
 
 ```
 
-
-## Funções disponíveis
-O pacote contém 7 funções simples, sendo:
-
--Quatro delas para explorar os dados
--Uma para plotar um dos mapeamentos
--Duas para exportar os dados
-
-
+A documentação das bases pode ser acessada pelo comando `?plantiosflorestais::mapeamentos_municipios` e `?plantiosflorestais::mapeamentos_estado` .
 
 ## Fonte de dados
 
 Cada relatório ou mapeamento que foi usado nesse pacote está destacado na tabela a seguir. A fonte dos dados foi mantida dentro das tibbles existentes no pacote.
 
-
-| Responsável | Fonte                                 | Relatório                                                                                                                                                                                              |
-| ----------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Responsável | Fonte                                 | Relatório                                                                                                                                                                                            |
+|-------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | IBGE        | IBGE                                  | [Histórico disponível no SNIF](https://dados.gov.br/dataset/sistema-nacional-de-informacoes-florestais-snif/resource/fdf7e4ce-8475-4205-8aad-3f97665b8a41)                                           |
-| SFB         | IBGE/PEVS                             | [Florestas do Brasil em resumo 2019](http://www.acr.org.br/uploads/biblioteca/Florestas_Brasil_2019_Portugues.pdf)                                                                                |
+| SFB         | IBGE/PEVS                             | [Florestas do Brasil em resumo 2019](http://www.acr.org.br/uploads/biblioteca/Florestas_Brasil_2019_Portugues.pdf)                                                                                   |
 | IBÁ         | IBÁ                                   | [Histórico disponível no SNIF](https://dados.gov.br/dataset/sistema-nacional-de-informacoes-florestais-snif/resource/43251bd6-e2c9-4dc8-93c9-379bf15e29d9)                                           |
 | IBÁ         | IBÁ/FGV/Pöyry                         | [IBÁ - Relatório Anual 2020](https://www.iba.org/datafiles/publicacoes/relatorios/relatorio-iba-2020.pdf)                                                                                            |
 | APRE        | APRE/UFPR                             | [APRE - Estudo Setorial 2020](https://apreflorestas.com.br/publicacoes/estudo-setorial-apre-2020-2/)                                                                                                 |
 | IFPR        | SFB/IFPR                              | [Mapeamentos dos plantios florestais do estado do Paraná](https://apreflorestas.com.br/publicacoes/ifpr-e-sfb-mapeamento-dos-plantios-florestais-do-estado-do-parana/)                               |
-| ACR         | ACR/UDESC-CAV                         | [ACR - Anuário Estatístico de Base Florestal para o estado de Santa Catarina 2019](http://www.acr.org.br/uploads/biblioteca/Anuario_ACR_2019_atualizado.pdf)                                      |
+| ACR         | ACR/UDESC-CAV                         | [ACR - Anuário Estatístico de Base Florestal para o estado de Santa Catarina 2019](http://www.acr.org.br/uploads/biblioteca/Anuario_ACR_2019_atualizado.pdf)                                         |
 | AGEFLOR     | AFUBRA/AGEFLOR, FEPAM, RDK Logs, SEMA | [AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017](http://www.ageflor.com.br/noticias/wp-content/uploads/2017/08/A-INDUSTRIA-DE-BASE-FLORESTAL-NO-RS-2017.pdf)                      |
 | AGEFLOR     | AGEFLOR, FEPAM, Codex, RDK Logs       | [AGEFLOR - O setor de base florestal no Rio Grande do Sul 2020](http://www.ageflor.com.br/noticias/wp-content/uploads/2020/12/O-Setor-de-Base-Florestal-no-Rio-Grande-do-Sul-2020-ano-base-2019.pdf) |
 | FAMATO      | IMEA                                  | [Diagnóstico de Florestas Plantadas do Estado do Mato Grosso](http://www.arefloresta.org.br/uploads/downloads/00072201414739.pdf)                                                                    |
 
-
 O presente pacote não dispensa a leitura e consulta dos relatórios oficiais, apenas consolida números de áreas. Toda explicação metodológica sobre os mapeamentos e noção de contexto para cada valor podem ser encontrados nos respectivos arquivos originais.
 
 Toda informação utilizada advinda desse pacote deve ser devidamente citada a fonte, usando o mapeamento de referência.
+
+## Funções disponíveis
+
+O pacote contém 7 funções simples, sendo:
+
+-   Quatro delas para explorar os dados
+
+-   Uma para plotar um dos mapeamentos
+
+-   Duas para exportar os dados
+
+### mapeamentos_disponiveis()
+
+Função utilizada para verificar rapidamente quais os mapeamentos disponíveis nas bases.
+
+```{r}
+library(magrittr)
+plantiosflorestais::mapeamentos_disponiveis() %>%
+    head() %>% 
+    kableExtra::kable()
+    
+```
+
+### mapeamento_disponivel_uf()
+
+Função utilizada para verificar a área dos mapeamentos existentes para uma determinada unidade federativa. Se não definida nenhuma, o padrão é 'PR'.
+
+```{r}
+plantiosflorestais::mapeamento_disponivel_uf(unidade_federativa = "SC") %>% 
+    head() %>% 
+    kableExtra::kable()
+
+```
+
+### generos_plantios_disponiveis()
+
+Exibe os gêneros existentes no pacote. Pode ou não exibir o nome do mapeamento. O argumento padrõa é `FALSE`, para não exibir o nome dos mapeamentos.
+
+```{r}
+plantiosflorestais::generos_plantios_disponiveis() %>% 
+    kableExtra::kable()
+
+```
+
+```{r}
+plantiosflorestais::generos_plantios_disponiveis(exibir_nome_mapeamento = TRUE) %>% 
+    head() %>% 
+    kableExtra::kable()
+```
+
+### series_historicas_disponiveis()
+
+Obtém os mapeamentos com séries históricas dentro das bases, e suas respectivas áreas.
+
+```{r}
+plantiosflorestais::series_historicas_disponiveis() %>% 
+    head() %>% 
+    kableExtra::kable()
+```
+
+### plotar_historico_iba()
+
+Função para plotagem de gráficos. Realiza o plot por estado ou para o país com os dados da Indústria Brasileira de Árvores. Possui dois argumentos: `abrangecia_uf` e `exibir_rotulos`.
+
+O primeiro argumento recebe uma unidade federativa como string, "PR", por exemplo. Caso não seja declarado nenhum estado, o gráfico será com os dados nacionais. O segundo argumento define se os rótulos de totais das barras devem ser ou não exibidos, com `TRUE` ou `FALSE`. O padrão é como `FALSE`.
+
+```{r, out.height=12}
+plantiosflorestais::plotar_historico_iba()
+```
+
+### exportar_xlsx()
+
+### exportar_csv()
