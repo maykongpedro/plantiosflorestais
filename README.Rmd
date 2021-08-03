@@ -102,7 +102,9 @@ O pacote contém 7 funções simples, sendo:
 
 -   Duas para exportar os dados
 
-### mapeamentos_disponiveis()
+As funções podem ser verificadas a seguir:
+
+-   **`mapeamentos_disponiveis()`**
 
 Função utilizada para verificar rapidamente quais os mapeamentos disponíveis nas bases.
 
@@ -114,7 +116,7 @@ plantiosflorestais::mapeamentos_disponiveis() %>%
     
 ```
 
-### mapeamento_disponivel_uf()
+-   **`mapeamento_disponivel_uf()`**
 
 Função utilizada para verificar a área dos mapeamentos existentes para uma determinada unidade federativa. Se não definida nenhuma, o padrão é 'PR'.
 
@@ -125,7 +127,7 @@ plantiosflorestais::mapeamento_disponivel_uf(unidade_federativa = "SC") %>%
 
 ```
 
-### generos_plantios_disponiveis()
+-   **`generos_plantios_disponiveis()`**
 
 Exibe os gêneros existentes no pacote. Pode ou não exibir o nome do mapeamento. O argumento padrõa é `FALSE`, para não exibir o nome dos mapeamentos.
 
@@ -141,9 +143,9 @@ plantiosflorestais::generos_plantios_disponiveis(exibir_nome_mapeamento = TRUE) 
     kableExtra::kable()
 ```
 
-### series_historicas_disponiveis()
+-   **`series_historicas_disponiveis()`**
 
-Obtém os mapeamentos com séries históricas dentro das bases, e suas respectivas áreas.
+Obtém os mapeamentos com séries históricas dentro das bases e suas respectivas áreas.
 
 ```{r}
 plantiosflorestais::series_historicas_disponiveis() %>% 
@@ -151,13 +153,13 @@ plantiosflorestais::series_historicas_disponiveis() %>%
     kableExtra::kable()
 ```
 
-### plotar_historico_iba()
+-   **`plotar_historico_iba()`**
 
 Função para plotagem de gráficos. Realiza o plot por estado ou para o país com os dados da Indústria Brasileira de Árvores. Possui dois argumentos: `abrangecia_uf` e `exibir_rotulos`.
 
 O primeiro argumento recebe uma unidade federativa como string, "PR", por exemplo. Caso não seja declarado nenhum estado, o gráfico será com os dados nacionais. O segundo argumento define se os rótulos de totais das barras devem ser ou não exibidos, com `TRUE` ou `FALSE`. O padrão é como `FALSE`.
 
-```{r, out.height=12}
+```{r}
 plantiosflorestais::plotar_historico_iba()
 ```
 

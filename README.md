@@ -128,7 +128,9 @@ O pacote contém 7 funções simples, sendo:
 
 -   Duas para exportar os dados
 
-### mapeamentos\_disponiveis()
+As funções podem ser verificadas a seguir:
+
+-   **`mapeamentos_disponiveis()`**
 
 Função utilizada para verificar rapidamente quais os mapeamentos
 disponíveis nas bases.
@@ -226,7 +228,7 @@ Pöyry e IBÁ
 </tbody>
 </table>
 
-### mapeamento\_disponivel\_uf()
+-   **`mapeamento_disponivel_uf()`**
 
 Função utilizada para verificar a área dos mapeamentos existentes para
 uma determinada unidade federativa. Se não definida nenhuma, o padrão é
@@ -343,7 +345,7 @@ Por municÍpio
 </tbody>
 </table>
 
-### generos\_plantios\_disponiveis()
+-   **`generos_plantios_disponiveis()`**
 
 Exibe os gêneros existentes no pacote. Pode ou não exibir o nome do
 mapeamento. O argumento padrõa é `FALSE`, para não exibir o nome dos
@@ -467,9 +469,9 @@ Corte
 </tbody>
 </table>
 
-### series\_historicas\_disponiveis()
+-   **`series_historicas_disponiveis()`**
 
-Obtém os mapeamentos com séries históricas dentro das bases, e suas
+Obtém os mapeamentos com séries históricas dentro das bases e suas
 respectivas áreas.
 
 ``` r
@@ -583,7 +585,7 @@ AGEFLOR - A indústria de base florestal no Rio Grande do Sul 2017
 </tbody>
 </table>
 
-### plotar\_historico\_iba()
+-   **`plotar_historico_iba()`**
 
 Função para plotagem de gráficos. Realiza o plot por estado ou para o
 país com os dados da Indústria Brasileira de Árvores. Possui dois
@@ -599,7 +601,7 @@ como `FALSE`.
 plantiosflorestais::plotar_historico_iba()
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" height="12" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 ### exportar\_xlsx()
 
