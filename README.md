@@ -130,7 +130,7 @@ O pacote contém 7 funções simples, sendo:
 
 As funções podem ser verificadas a seguir:
 
-**`mapeamentos_disponiveis()`**
+-   **`mapeamentos_disponiveis()`**
 
 Função utilizada para verificar rapidamente quais os mapeamentos
 disponíveis nas bases.
@@ -227,7 +227,7 @@ Pöyry e IBÁ
 </tbody>
 </table>
 
-**`mapeamento_disponivel_uf()`**
+-   **`mapeamento_disponivel_uf()`**
 
 Função utilizada para verificar a área dos mapeamentos existentes para
 uma determinada unidade federativa. Se não definida nenhuma, o padrão é
@@ -595,18 +595,6 @@ por exemplo. Caso não seja declarado nenhum estado, o gráfico será com
 os dados nacionais. O segundo argumento define se os rótulos de totais
 das barras devem ser ou não exibidos, com `TRUE` ou `FALSE`. O padrão é
 `FALSE`.
-
-``` r
-plantiosflorestais::plotar_historico_iba()
-```
-
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
-
-``` r
-plantiosflorestais::plotar_historico_iba(abrangecia_uf = "SP", exibir_rotulos = TRUE)
-```
-
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 -   **`exportar_xlsx()`**
 

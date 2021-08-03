@@ -104,7 +104,7 @@ O pacote contém 7 funções simples, sendo:
 
 As funções podem ser verificadas a seguir:
 
-**`mapeamentos_disponiveis()`**
+-   **`mapeamentos_disponiveis()`**
 
 Função utilizada para verificar rapidamente quais os mapeamentos disponíveis nas bases.
 
@@ -116,7 +116,7 @@ plantiosflorestais::mapeamentos_disponiveis() %>%
     
 ```
 
-**`mapeamento_disponivel_uf()`**
+-   **`mapeamento_disponivel_uf()`**
 
 Função utilizada para verificar a área dos mapeamentos existentes para uma determinada unidade federativa. Se não definida nenhuma, o padrão é 'PR'.
 
@@ -159,11 +159,11 @@ Função para plotagem de gráficos. Realiza o plot por estado ou para o país c
 
 O primeiro argumento recebe uma unidade federativa como string, "PR", por exemplo. Caso não seja declarado nenhum estado, o gráfico será com os dados nacionais. O segundo argumento define se os rótulos de totais das barras devem ser ou não exibidos, com `TRUE` ou `FALSE`. O padrão é `FALSE`.
 
-```{r, echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE, results='hide'}
 plantiosflorestais::plotar_historico_iba()
 ```
 
-```{r, echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE, results='hide'}
 plantiosflorestais::plotar_historico_iba(abrangecia_uf = "SP", exibir_rotulos = TRUE)
 ```
 
