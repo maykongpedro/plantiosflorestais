@@ -37,5 +37,16 @@ mapeamentos_estados <- readr::read_rds("./data-raw/mapeamentos_gerais.rds")
 mapeamentos_estados %>% tibble::view()
 
 
+# ajustar nome do gênero acácia
+mapeamentos_municipios <- mapeamentos_municipios %>%
+    dplyr::mutate(
+        genero = stringr::str_replace_all(genero, "Acácia", "Acacia")
+    )
+
+mapeamentos_estados <- mapeamentos_estados %>%
+    dplyr::mutate(
+        genero = stringr::str_replace_all(genero, "Acácia", "Acacia")
+    )
+
 usethis::use_data(mapeamentos_municipios, overwrite = TRUE)
 usethis::use_data(mapeamentos_estados, overwrite = TRUE)
