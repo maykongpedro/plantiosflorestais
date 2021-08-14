@@ -19,7 +19,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
                                  exibir_rotulos = FALSE) {
 
 
-    # Gera um warning por conta d fonte usada, entao suprime com a funcao abaixo
+    # Gera um warning por conta dA fonte usada, entao suprime com a funcao abaixo
     suppressWarnings({
 
     # Base
@@ -175,22 +175,8 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
         dplyr::summarise(total = sum(area_ha/10^6)) %>%
         dplyr::mutate(
             total = round(total, 2),
-            total_label = sprintf("%1.2f M.", total)
+            total_label = sprintf("%1.2f", total)
             )
-   totais
-
-
-
-
-   iba %>%
-       dplyr::group_by(ano_base,genero) %>%
-       dplyr::summarise(total = sum(area_ha/10^6)) %>%
-       dplyr::mutate(
-           total = round(total, 2),
-           total_label = sprintf("%1.2f M.", total)
-       )
-
-
 
 
     # Gerar plot
@@ -238,6 +224,7 @@ plotar_historico_iba <- function(abrangecia_uf = NULL,
             axis.ticks = ggplot2::element_line(size = 1),
             text = ggplot2::element_text(color = config_plot[["text"]]),
             axis.title = ggplot2::element_text(face = "bold"),
+            axis.text = ggplot2::element_text(face = "bold"),
             plot.title = ggplot2::element_text(face = "bold"),
             plot.subtitle = ggtext::element_markdown(),
             plot.caption = ggtext::element_markdown()
