@@ -26,5 +26,7 @@ utils::globalVariables(c(
     "dupe_count",
     "total_label",
     "maximo",
-    "total"
+    "total",
+    "abordagem",
+    "area_total_ha"
 ))

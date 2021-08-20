@@ -82,7 +82,8 @@ mapeamento_disponivel_uf  <- function(unidade_federativa = "PR"){
     # Juntar os dois resultados
     df_final <- dplyr::bind_rows(muni, estado) %>%
         dplyr::arrange(dplyr::desc(ano_base)) %>%
-        dplyr::relocate(ano_base, .before = mapeamento)
+        dplyr::mutate(uf = unidade_federativa) %>%
+        dplyr::select(uf, ano_base, mapeamento, area_total_ha, abordagem)
 
     # Testar se existe resultado no output
     linhas_df <- nrow(df_final)

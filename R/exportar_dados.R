@@ -45,7 +45,6 @@ exportar_xlsx <- function(caminho_para_salvar_bases, ...){
 #' @examples
 exportar_csv <- function(caminho_para_salvar_bases, ...){
 
-
     # Bases
     map_muni <- plantiosflorestais::mapeamentos_municipios
     map_uf <- plantiosflorestais::mapeamentos_estados
@@ -63,8 +62,8 @@ exportar_csv <- function(caminho_para_salvar_bases, ...){
 
 
     # Exportar bases
-    readr::write_csv2(map_muni, file = caminho_base_muni, ...)
-    readr::write_csv2(map_uf, file = caminho_base_estados, ...)
+    readr::write_csv2(map_muni, file = caminho_base_muni,...)
+    readr::write_csv2(map_uf, file = caminho_base_estados,...)
 
 }
 
