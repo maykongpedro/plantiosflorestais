@@ -13,8 +13,7 @@ O pacote foi resultado do Trabalho de Conclusão de Curso apresentado ao
 curso de Engenharia Florestal da Universidade Federal do Paraná (UFPR),
 pelo graduando Maykon G. G. Pedro. O trabalho final pode ser acessado
 pelo seguinte link:
-[https://github.com/maykongpedro/plantiosflorestais/blob/master/inst/20210823-TCC-Corrigido-Aprovado-Maykon.pdfVer
-trabalho](https://github.com/maykongpedro/plantiosflorestais/blob/master/inst/20210823-TCC-Corrigido-Aprovado-Maykon.pdf).
+[Ver trabalho](https://github.com/maykongpedro/plantiosflorestais/blob/master/inst/20210823-TCC-Corrigido-Aprovado-Maykon.pdf).
 
 O repositório que contém todo o processo de extração e limpeza dos dados
 pode ser consultado no seguinte endereço [Acessar
