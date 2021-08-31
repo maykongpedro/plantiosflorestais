@@ -22,7 +22,7 @@ Repositório](https://github.com/maykongpedro/2021-07-04-extracao-mapeamentos-pl
 Os mapeamentos disponíveis podem ser verificados no tópico “Fonte de
 dados” desse `README`.
 
-Todos uso dos dados aqui contidos deve ser feito com a **citação da
+Todo o uso dos dados aqui contidos deve ser feito com a **citação da
 fonte** do relatório envolvido.
 
 ## Instalação
